@@ -69,11 +69,9 @@ class Splitter {
     if ($is_tag) {
       $bare_tag = $tag_name;
       $target_ref = "refs/tags/$tag_name";
-      $target_ref_devmaster = "refs/tags/7.x-$bare_tag";
     }
     else {
       $target_ref = "refs/heads/$branch_name";
-      $target_ref_devmaster = "refs/heads/7.x-$current_ref";
     }
 
     foreach ($repos as $folder => $remote) {
@@ -104,15 +102,6 @@ class Splitter {
       // Push the current_ref to the remote.
       if (self::exec("git push --force $remote $target:$target_ref") != 0) {
         exit(1);
-      }
-
-      // Handle special case for devmaster
-      // Push an additional "7.x-1.x" or "7.x-2.x" branch to remote if splitting 1.x or 2.x
-      if ($folder == 'devmaster') {
-        echo "\n\n- Pushing devmaster to $target_ref_devmaster ... \n";
-        if (self::exec("git push --force $remote $target:$target_ref_devmaster") != 0) {
-          exit(1);
-        }
       }
     }
   }
