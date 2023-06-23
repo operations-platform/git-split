@@ -78,7 +78,7 @@ class Splitter {
 
 
       // Use a different local target branch so we dont break local installs by reassigning the current branch to the new commit.
-      $target = "refs/splits/$folder";
+      $target = "refs/splits/{$folder}-split";
 
       // Split the commits into a different branch.
       // @TODO: When this becomes a composer plugin, pass -v to --progress.
