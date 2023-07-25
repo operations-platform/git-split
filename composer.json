@@ -1,0 +1,36 @@
+{
+  "name": "drupal-operations/git-split",
+  "type": "composer-plugin",
+  "description": "Adds composer git:split composer command for easy splitting of a git repository into many others.",
+  "keywords": [],
+  "homepage": "https://drupal.org/project/operations",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Jon Pugh",
+      "email": "jon@thinkdrop.net"
+    }
+  ],
+  "require": {
+    "php": "^7.1||^8.0",
+    "composer-plugin-api": "^1.0 || ^2.0"
+  },
+  "require-dev": {
+    "symfony/console": "^4.4|^5.0"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    },
+    "class": "Operations\\Composer\\Plugin\\GitSplit\\Composer\\Plugin"
+  },
+  "autoload": {
+    "psr-4": {
+      "Operations\\Composer\\Plugin\\GitSplit\\": ""
+    }
+  },
+  "bin": [
+    "bin/git-split"
+  ],
+  "minimum-stability": "dev"
+}
